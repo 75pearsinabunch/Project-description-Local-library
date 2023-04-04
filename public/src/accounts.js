@@ -6,18 +6,24 @@ function findAccountById(accounts, id) {
 }
 
 function sortAccountsByLastName(accounts) {
-  return  accounts.sort((a, b) => {
-  let aa = a.name.last, bb = b.name.last;
-    if (aa < bb)return -1;
-    if (aa > bb)return 1;
-    return 0;
-  });
+  // return  accounts.sort((a, b) => {
+  // let aa = a.name.last, bb = b.name.last;
+  //   if (aa < bb)return -1;
+  //   if (aa > bb)return 1;
+  //   return 0;
+  // });
+  return  accounts.sort((first, second) => {
+    let fir = first.name.last, sec = second.name.last;
+      if (fir < sec)return -1;
+      if (fir > sec)return 1;
+      return 0;
+    });
 }
 
 function getTotalNumberOfBorrows(account, books) {
 
   return books.reduce((item, book) =>{
-    if(book.borrows.find(i=>i.id === account.id)) item++;
+    if(book.borrows.find(thing=>thing.id === account.id)) item++;
     return item;
   }, 0);
 
@@ -36,8 +42,8 @@ function getBooksPossessedByAccount(account, books, authors) {
   //arr.reduce(callback(accumulator, currentValue), initialValue)
   return books.reduce((accumulator, book) => {
     const { authorId, borrows } = book;
-    const record = borrows.find(i => i.id === account.id && i.returned === false );
-    const author = (record) ? authors.find(a => a.id === authorId) : null;
+    const record = borrows.find(thing => thing.id === account.id && thing.returned === false );
+    const author = (record) ? authors.find(some => some.id === authorId) : null;
 
     if (author) {
       book.author = author;
