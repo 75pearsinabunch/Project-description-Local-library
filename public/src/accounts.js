@@ -1,7 +1,8 @@
 function findAccountById(accounts, id) {
-  for(item in accounts){
-    if(id == accounts[item].id)return accounts[item];
-  }
+  // for(item in accounts){
+  //   if(id == accounts[item].id)return accounts[item];
+  // }
+  return accounts.find(account => account.id == id);
 }
 
 function sortAccountsByLastName(accounts) {
@@ -14,15 +15,21 @@ function sortAccountsByLastName(accounts) {
 }
 
 function getTotalNumberOfBorrows(account, books) {
-  let acc = account.id; 
-  let i = 0;
-  //practice array methods
-   for(item in books){
-    for(some in books[item].borrows){
-      if(acc == books[item].borrows[some].id)i++;
-    }
-  }
-  return i;
+
+  return books.reduce((item, book) =>{
+    if(book.borrows.find(i=>i.id === account.id)) item++;
+    return item;
+  }, 0);
+
+  // let acc = account.id; 
+  // let found = 0;
+  // //practice array methods
+  //  for(item in books){
+  //   for(some in books[item].borrows){
+  //     if(acc == books[item].borrows[some].id)found++;
+  //   }
+  // }
+  // return found;
 }
 
 function getBooksPossessedByAccount(account, books, authors) {
