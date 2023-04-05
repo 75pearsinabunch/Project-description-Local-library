@@ -52,6 +52,7 @@ function getMostPopularAuthors(books, authors) {
   for(item in authors){
     for(some in books){
         if(authors[item].id == books[some].authorId){
+          //map() for object elements in array
           list.push({name: authors[item].name.first+" "+authors[item].name.last, count: books[some].borrows.length});
        }
     }
