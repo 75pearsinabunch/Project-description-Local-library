@@ -1,3 +1,8 @@
+function helpsort (a,b){
+  return b.count-a.count
+}
+
+
 function getTotalBooksCount(books) {
     return books.length;
 }
@@ -34,7 +39,7 @@ let list = [];
   // list.sort(function(a, b){return b.count-a.count});
   // console.log(list);
   // return(list.slice(0, 5));
-  return(list.sort(function(first, second){return second.count-first.count}).slice(0, 5));
+  return(list.sort(helpsort).slice(0, 5));
 }
 
 function getMostPopularBooks(books) {
@@ -44,7 +49,7 @@ function getMostPopularBooks(books) {
   }
 //   list.sort(function(a, b){return b.count-a.count});
 //   return(list.slice(0, 5));
-return(list.sort(function(first, second){return second.count-first.count}).slice(0, 5));
+return(list.sort(helpsort).slice(0, 5));
 }
 
 function getMostPopularAuthors(books, authors) {
@@ -59,7 +64,7 @@ function getMostPopularAuthors(books, authors) {
   }
   //console.log(list.sort(function(a, b){return b.count-a.count}).slice(0, 5));
   //return(list.sort(function(a, b){return b.count-a.count}).slice(0, 5));
-  return(list.sort(function(first, second){return second.count-first.count}).slice(0, 5));
+  return(list.sort(helpsort).slice(0, 5));
 }
 
 module.exports = {

@@ -48,20 +48,25 @@ function getBorrowersForBook(book, accounts) {
   // }
   // console.log(information);
   // return information; 
-  let books = [];
-  let information = []
-  const thing = book.borrows;
-  for(some in thing){
-     books.push(thing[some].id);
-  }
-  for(item in accounts){
-    if(books.includes(accounts[item].id)){
-      let newbook = {id: accounts[item].id,returned: thing[0].returned, ...accounts[item]};
-      information.push(newbook);
-    }
-  }
-  console.log(information);
-  return information; 
+  //let books = [];
+ // let books = [];
+ let information = []
+ const thing = book.borrows;
+//   for(some in thing){
+//      books.push(thing[some].id);
+//   }
+const books = thing.map((thin) => thin.id);
+//console.log(result);
+ 
+ 
+ for(item in accounts){
+   if(books.includes(accounts[item].id)){
+     let newbook = {id: accounts[item].id,returned: thing[0].returned, ...accounts[item]};
+     information.push(newbook);
+   }
+ }
+ console.log(information);
+ return information; 
 }
 
 module.exports = {
